@@ -1307,7 +1307,7 @@
     "priceVisible": "$120.500",
     "price": 115500,
     "priceLocal": 106000,
-    "inStock": true,
+    "inStock": false,
     "id": "prod-fuente-gigabyte-750w-80plus-br-850",
     "priceNum": "115500",
     "cashPrice": "106000",
