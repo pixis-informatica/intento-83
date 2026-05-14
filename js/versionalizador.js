@@ -35,10 +35,10 @@
     window.fetchVersioned = function (url, options) {
       var finalUrl = url;
       try {
-        var urlObj = new URL(url, window.location.origin);
+        var urlObj = new URL(url, window.location.href);
         urlObj.searchParams.set('v', window.PIXIS_VERSION);
         urlObj.searchParams.delete('_');
-        finalUrl = urlObj.pathname + urlObj.search;
+        finalUrl = urlObj.toString();
       } catch (e) {
         var baseUrl = url.split('?')[0];
         finalUrl = baseUrl + '?v=' + window.PIXIS_VERSION;
@@ -91,9 +91,21 @@
       .then(function () {
         // Lógica de editor original
         if (location.search.includes('edit=true')) {
-          var s = document.createElement('script');
-          s.src = 'editor/editor.js?_=' + Date.now();
-          document.body.appendChild(s);
+          return new Promise(function(resolve) {
+            var s = document.createElement('script');
+            s.src = 'editor/editor.js?_=' + Date.now();
+            s.onload = resolve;
+            s.onerror = resolve;
+            document.body.appendChild(s);
+          });
+        }
+      })
+      .then(function () {
+        // Prevención de Race Condition: Al descentralizar este loader del HTML a un archivo .js,
+        // window.onload generalmente se dispara ANTES de que js/state.js se termine de descargar y evalúe.
+        // Si el DOM ya cargó, disparamos el evento manualmente para inicializar PixisState.
+        if (document.readyState === 'complete') {
+          window.dispatchEvent(new Event('load'));
         }
       });
   }
