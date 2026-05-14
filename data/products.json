@@ -102,7 +102,7 @@
     "subcategoria": "nvidia",
     "price": 728500,
     "priceLocal": 697000,
-    "inStock": true,
+    "inStock": false,
     "id": "prod-vga-msi-geforce-rtx-5060-8g-ve-357",
     "priceNum": "728500",
     "cashPrice": "697000",
