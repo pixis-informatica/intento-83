@@ -1302,12 +1302,12 @@
     "category2": ""
   },
   {
-    "img": "img\\productos\\FUENTE GIGABYTE 750 BLACK.png ,img\\des\\FUENTE GIGABYTE 750 BLACK des.png",
+    "img": "img\\productos\\FUENTE GIGABYTE 750 BLACK.png",
     "title": "Fuente Gigabyte 750w 80plus bronze",
     "priceVisible": "$120.500",
     "price": 115500,
     "priceLocal": 106000,
-    "inStock": true,
+    "inStock": false,
     "id": "prod-fuente-gigabyte-750w-80plus-br-850",
     "priceNum": "115500",
     "cashPrice": "106000",
@@ -1317,7 +1317,8 @@
     "subcategoria": "",
     "category": "fuentes",
     "category2": "destacados",
-    "category3": "nuevos"
+    "category3": "nuevos",
+    "gallery": "img\\productos\\FUENTE GIGABYTE 750 BLACK.png,img\\des\\FUENTE GIGABYTE 750 BLACK des.png"
   },
   {
     "img": "img\\des\\FUENTE GIGABYTE 550 BLACK des.png",
@@ -1750,7 +1751,7 @@
     "subcategoria": "100hz",
     "price": 160000,
     "priceLocal": 154500,
-    "inStock": true,
+    "inStock": false,
     "id": "prod-monitor-lg-24-led-24ms500-bord-44",
     "priceNum": "160000",
     "cashPrice": "154500",
