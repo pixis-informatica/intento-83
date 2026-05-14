@@ -33,8 +33,16 @@
     };
 
     window.fetchVersioned = function (url, options) {
-      var baseUrl = url.split('?')[0];
-      var finalUrl = baseUrl + '?v=' + window.PIXIS_VERSION;
+      var finalUrl = url;
+      try {
+        var urlObj = new URL(url, window.location.origin);
+        urlObj.searchParams.set('v', window.PIXIS_VERSION);
+        urlObj.searchParams.delete('_');
+        finalUrl = urlObj.pathname + urlObj.search;
+      } catch (e) {
+        var baseUrl = url.split('?')[0];
+        finalUrl = baseUrl + '?v=' + window.PIXIS_VERSION;
+      }
 
       var finalOptions = Object.assign({}, options || {}, {
         cache: 'no-store',
@@ -52,13 +60,17 @@
     window._originalFetch = window.fetch;
     window.fetch = function () {
       var url = arguments[0];
+      var options = arguments[1];
+      
       if (typeof url === 'string') {
-        var isTarget = url.includes('site.json') ||
-          url.includes('products.json') ||
-          url.includes('categories.json') ||
-          url.includes('ui.json');
-        if (isTarget) {
-          return window.fetchVersioned(url, arguments[1]);
+        var isGet = !options || !options.method || options.method.toUpperCase() === 'GET';
+        var isDataTarget = url.includes('/data/site.json') ||
+                           url.includes('/data/products.json') ||
+                           url.includes('/data/categories.json') ||
+                           url.includes('/data/ui.json');
+                           
+        if (isGet && isDataTarget) {
+          return window.fetchVersioned(url, options);
         }
       }
       return window._originalFetch.apply(this, arguments);
