@@ -1,0 +1,878 @@
+body.light-mode {
+  background:
+    linear-gradient(rgba(244, 247, 251, 0.95), rgba(224, 232, 245, 0.95)),
+    url("../img/fondo-B-mobile.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  color: #333333;
+}
+@media (min-width: 769px) {
+  body.light-mode {
+    background:
+      linear-gradient(rgba(244, 247, 251, 0.95), rgba(224, 232, 245, 0.95)),
+      url("../img/fondo-B-pc.webp");
+
+    background-attachment: fixed;
+  }
+}
+
+.btn-top { 
+    background: linear-gradient(45deg, #ffffffc9, #1fccd8);
+    box-shadow: 0 0 20px #000000;
+ }
+
+/* TITULOS */
+
+/* CONTENEDOR DESTACADOS */
+.destacados {
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+
+.destacados h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #1e293b;
+    /* título principal más oscuro, gris empresarial */
+    margin: 60px 0 30px;
+    text-shadow: none;
+}
+
+.btn-prev,
+.btn-next {
+    background: rgba(0, 255, 255, 0.7);
+    color: #f8f8f8;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+    background: #00ffff;
+    color: #ffffff;
+}
+
+.nuevos-ingresos .card {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* empuja precio al fondo */
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 420px;
+    /* altura uniforme */
+    background: #ffffff;
+    border: 2px solid transparent;
+    background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(270deg, red, orange, yellow, lime, cyan, blue, violet, red) border-box;
+    background-size: 400% 400%;
+    animation: rgbBorder 6s linear infinite;
+    border-radius: 12px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .nuevos-ingresos .card {
+        border: 2px solid #ff00ff !important;
+        background: #ffffff !important;
+        animation: none !important;
+    }
+}
+
+/* CARRUSEL */
+.carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+.destacados .productos,
+.nuevos-ingresos .productos {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    padding-bottom: 20px;
+}
+
+/* pausa al pasar el mouse ELIMINADA */
+
+/* NUEVO: Contenedor scrolleable fluido y ocultación de scrollbar */
+.carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.carousel:active {
+    cursor: grabbing;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+}
+
+/* CARDS DENTRO DEL CARRUSEL */
+.destacados .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 420px;
+    background: rgba(255, 255, 255, 0.85);
+    /* blanco traslúcido glassmorphism */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 210, 224, 0.7);
+    border-radius: 16px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.nuevos-ingreso {
+    color: #000000;
+    text-shadow: none;
+}
+
+.destacados .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    border-color: #3b82f6;
+}
+
+.link-producto {
+    background: #00ff73;
+    border: 2px solid #000000;
+
+    color: #000000;
+}
+
+
+.link-producto:hover {
+    background: #26d4ff;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* TITULO H3 */
+.destacados .card h3 {
+    font-size: 18px;
+    color: #0f172a;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 48px;
+}
+
+/* DESCRIPCION */
+.destacados .card p {
+    font-size: 14px;
+    color: #334155;
+    /* gris muy oscuro para máximo contraste */
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 60px;
+}
+
+.destacados .card img,
+.card img {
+    background: #f8fafc;
+    /* Fondo minimamente grisáceo para que imágenes con fondo blanco puro resalten */
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Sombra difuminada interna para demarcar el borde de la imagen */
+}
+
+/* PRECIO */
+.destacados .card .precio-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.destacados .card .precio-local {
+    color: #0f766e;
+    font-weight: bold;
+}
+
+.destacados .card .precio-especial {
+    color: #059669;
+    /* Verde robusto */
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.Gabinetes h2 {
+    color: #1e293b;
+    text-shadow: none;
+}
+
+.categoria {
+    color: #4338ca;
+    /* Indigo moderno en lugar de violeta brillante */
+    text-shadow: none;
+}
+
+/* CATEGORIAS NAV */
+.categorias-nav a {
+    background: #f1f5f9;
+    border: 2px solid #cbd5e1;
+    color: #334155;
+    font-weight: 500;
+}
+
+.categorias-nav a:hover {
+    box-shadow: 0 6px 14px rgba(100, 116, 139, 0.2);
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+/* FILTROS */
+.filtros-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-filtro {
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    background: transparent;
+}
+
+.btn-filtro:hover {
+    border-color: #3b82f6;
+    color: #1d4ed8;
+    background: #f0fdf4;
+}
+
+.btn-filtro.activo {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #1d4ed8;
+    font-weight: 600;
+}
+
+/* TARJETAS PRODUCTO */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: #93c5fd;
+}
+
+.card h3 {
+    color: #0f172a;
+}
+
+.card p {
+    color: #64748b;
+}
+
+.pulsante {
+    display: block;
+}
+
+/* PRECIO (IMPORTANTE QUE RESALTE) */
+.precio {
+    color: #059669;
+    /* Verde elegante y fuerte */
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.precio-viejo {
+    color: #ef4444;
+    /* Rojo suave */
+}
+
+.precio-oferta {
+    color: #10b981;
+}
+
+.precio-lista {
+    color: #64748b;
+}
+
+/* BOTONES */
+.btn-add-cart {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid #2563eb;
+    /* Azul corporativo moderno */
+    background: transparent;
+    color: #2563eb;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add-cart:hover {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-cart {
+    background: #475569;
+    color: white;
+}
+
+.btn-cart:hover {
+    background: #334155;
+}
+
+.btn-wsp {
+    background: linear-gradient(45deg, #22c55e, #16a34a);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    color: white;
+}
+
+.btn-wsp:hover {
+    background: linear-gradient(45deg, #16a34a, #15803d);
+    box-shadow: 0 8px 15px rgba(22, 163, 74, 0.3);
+}
+
+/* BUSCADOR */
+#searchInput {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0px;
+    padding-left: 20px;
+}
+
+#searchInput::placeholder {
+    color: #ffffff;
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
+    outline: none;
+}
+
+/* MODAL PRODUCTO */
+
+.modal-content {
+    background: #ffffff;
+    border: 1px solid #cfd5e1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-img-container {
+    background: #6c6d6e;
+}
+
+.modal-desc {
+    color: #555;
+}
+
+.modal-price {
+    color: #008a3d;
+}
+
+.modal-close {
+    color: #2a2a2a;
+}
+
+/* texto general modal */
+.modal-content {
+    color: #868484;
+}
+
+/* titulos */
+.modal-content h1,
+.modal-content h2,
+.modal-content h3 {
+    color: #1a1a1a;
+}
+
+/* listas y descripciones */
+.modal-content p,
+.modal-content li {
+    color: #3a3a3a;
+}
+
+.modal-precios span {
+    color: #000;
+}
+
+.precio-contado {
+    color: #000;
+}
+
+.precio-local strong {
+    color: #00a86b;
+}
+
+.precio-lista strong {
+    color: #000;
+}
+
+.btn-ver-cuotas {
+    border: 1px solid #00ff22;
+    color: #000000;
+
+}
+
+.modal-cuotas-detalle {
+    background: rgba(184, 184, 184, 0.85);
+}
+
+.modal-cuotas-detalle h3 {
+    color: #000000;
+}
+
+.cuotas-content {
+    background: #cccccc;
+}
+
+
+.fila-cuota {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.cuota-total {
+
+    color: #000000;
+}
+
+.fila-cuota {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fila-cuota span:first-child {
+    color: #000000;
+}
+
+.total-cuotas {
+    color: #07b81f;
+
+}
+
+
+/* CARRITO */
+
+.cart-modal {
+    background: #ffffff;
+    border: 1px solid #fdfdfd;
+}
+
+.cart-header {
+    border-bottom: 1px solid #ffffff;
+}
+
+.cart-header h3 {
+    color: #03d9ff;
+}
+
+.cart-footer {
+    background: #ffffff;
+}
+
+.cart-item {
+    background: #ffffff;
+    border-bottom: 1px solid #8d8d8d;
+}
+
+.cart-item h4 {
+    color: #000000;
+}
+
+.cart-item span {
+    color: #00ff73;
+}
+
+/* Cantidad */
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cart-qty button {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+
+    border-radius: 6px;
+    border: 1px solid #4dbcd8;
+    background: #000303;
+    color: #fff;
+
+    cursor: pointer;
+}
+
+.cart-qty button:hover {
+    background: #21acec;
+}
+
+.cart-qty span {
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 18px;
+    text-align: center;
+}
+
+.cart-total {
+    border-top: 2px solid #00f134;
+}
+
+.cart-total strong {
+    color: #f8f8f8;
+}
+
+/* INPUTS */
+
+.cart-section input[type="text"] {
+    background: #ffffff;
+    border: 1px solid #cfd5e1;
+    color: #2a2a2a;
+}
+
+#selectCuotas {
+    background: #ffffff;
+    border: 1px solid #cfd5e1;
+    color: #2a2a2a;
+}
+
+/* BOTON FINALIZAR */
+
+.btn-finish {
+    background: linear-gradient(90deg, #0055f1, #72e1f0);
+}
+
+/* BOTON VACIAR */
+
+#btn-clear-cart {
+    background: #ff4d4d;
+}
+
+/* FOOTER */
+
+.footer {
+    border-top: 1px solid #cfd5e1;
+    color: #000000;
+}
+
+.footer-follow span {
+    color: #ff00f2;
+}
+
+/* REDES */
+
+.red {
+    background: #3b3b3b;
+    box-shadow: 0 4px 10px rgba(253, 2, 241, 0.1);
+}
+
+/* SEPARADOR */
+
+.separador-categoria {
+    background: #484849;
+}
+
+/* TEMA CLARO */
+
+.light-theme .categorias-nav {
+
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #7f00ff;
+
+}
+
+.light-theme .categorias-nav a {
+
+    background: #ffffff;
+    color: #222;
+    border: 2px solid #7f00ff;
+
+}
+
+.light-theme #btnCategorias {
+
+    background: white;
+    color: #222;
+}
+
+/* =========================
+   MODAL CUOTAS SUPERPUESTO
+========================= */
+
+.modal-cuotas-detalle {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+
+.modal-cuotas-detalle h3 {
+    color: #ffffff;
+}
+
+.modal-cuotas-detalle h1 {
+    color: #ffffff;
+}
+
+.cuotas-content {
+    background: #646363;
+}
+
+.cabecera-cuotas {
+    color: #000000;
+}
+
+.fila-cuota {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.col-total {
+    color: #000000;
+}
+
+/* =========================
+MODO CLARO BOTON
+========================= */
+
+.theme-icon {
+
+    background: white;
+    color: black;
+    border: 2px solid black;
+
+}
+
+.theme-text {
+
+    color: black;
+
+}
+
+.theme-text2 {
+    color: #000000;
+}
+
+
+
+
+/* ALTA VISIBILIDAD EN MODO OFICINA */
+h1:not(.main-header h1),
+h2:not(.neon-title),
+h3,
+h4,
+h5,
+h6,
+p,
+span:not(.cart-count):not(.cart-qty span):not(.neon-title),
+div:not(.cart-qty):not(.btn-filtro):not(.main-header):not(.main-header div):not(.logo-container) {
+    color: #000000;
+}
+
+.card h3,
+.card p,
+.card span.precio {
+    color: #000 !important;
+}
+
+.card span.precio {
+    color: #059669 !important;
+    /* Restore green for price */
+}
+
+.neon-title {
+    color: #000 !important;
+    text-shadow: none !important;
+}
+
+
+/* RESTAURAR COLORES DEL HEADER (Modo Oficina no debe oscurecer el texto del Navbar) */
+.main-header,
+.main-header span,
+.main-header i,
+.main-header p,
+.main-header h1,
+.main-header h2,
+.main-header a,
+.main-header div:not(.search-bar):not(.theme-toggle) {
+    color: #ffffff !important;
+}
+
+.search-bar i {
+    color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+    .categorias-nav a {
+        display: block;
+        width: 100%;
+
+        background: #ffffff;
+        color: #111;
+        /* 🔥 CLAVE */
+
+        font-size: 12px;
+        padding: 7px 10px;
+
+        text-decoration: none;
+        border-bottom: 1px solid rgba(176, 38, 255, 0.2);
+
+        box-sizing: border-box;
+    }
+
+    .categorias-nav a:hover,
+    .categorias-nav a:active {
+        background: rgba(176, 38, 255, 0.15);
+        color: #000;
+        /* 🔥 asegurás contraste */
+    }
+
+    .categorias-nav a {
+        color: #111 ;
+    }
+}
+/* =========================
+   HEADER TOP TEXT (BASE)
+========================= */
+.header-top-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-align: center;
+
+    width: 100%;
+    height: 25px;
+
+    background: #ffffff;
+    color: #000000;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 31000;
+}
+@media (max-width: 768px) {
+    .header-top-text {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+}
+
+/* ==========================================================
+   MODO CLARO \u2014 Elementos con fondo oscuro (#0e0016)
+   Todos los nuevos marcos RGB: fondo claro + texto visible
+========================================================== */
+
+/* Bot\u00f3n Men\u00fa de Productos */
+.btnCategorias,
+.btnCategorias::after {
+    background: #eef2ff !important;
+}
+.btnCategorias::before {
+    opacity: 0.5;
+}
+.btnCategorias span {
+    color: #1e0050 !important;
+    -webkit-text-fill-color: #1e0050 !important;
+    text-shadow: none !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* T\u00edtulos de secci\u00f3n: Destacados y Nuevos Ingresos */
+.destacados h2,
+.destacados h2::after,
+.nuevos-ingreso,
+.nuevos-ingreso::after {
+    background: #eef2ff !important;
+}
+.destacados h2,
+.nuevos-ingreso {
+    color: #1e0050 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #1e0050 !important;
+}
+
+/* T\u00edtulos de Reels y Aprende */
+.neon-title,
+.neon-title::after {
+    background: #eef2ff !important;
+}
+.neon-title {
+    color: #1e0050 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #1e0050 !important;
+    animation: none !important;
+}
+
+/* Botones YouTube */
+.yt-button,
+.yt-button::after {
+    background: #eef2ff !important;
+}
+.yt-button {
+    color: #1e0050 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #1e0050 !important;
+    animation: none !important;
+}
+.yt-button:hover {
+    color: #7f00ff !important;
+    -webkit-text-fill-color: #7f00ff !important;
+    box-shadow: 0 0 14px rgba(127, 0, 255, 0.2) !important;
+}
+
+/* Centrado correcto de los t\u00edtulos en modo claro */
+.destacados h2,
+.nuevos-ingreso,
+.neon-title {
+    display: block !important;
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.btnCategorias {
+    display: block !important;
+    width: auto !important;
+    max-width: 380px !important;
+    margin: 0 auto !important;
+}

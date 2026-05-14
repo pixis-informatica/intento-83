@@ -1,0 +1,101 @@
+[
+  {
+    "id": "destacados",
+    "name": "Destacados",
+    "icon": "🔥",
+    "active": true
+  },
+  {
+    "id": "nuevos",
+    "name": "Nuevos Ingresos",
+    "icon": "✨"
+  },
+  {
+    "id": "Cables",
+    "name": "Adaptadores & Cables",
+    "icon": "🔌",
+    "active": true
+  },
+  {
+    "id": "almacenamiento",
+    "name": "Almacenamiento",
+    "icon": "💾",
+    "active": true
+  },
+  {
+    "id": "Camara de Seguridad",
+    "name": "Cámara de Seguridad",
+    "icon": "📷"
+  },
+  {
+    "id": "Cargadores",
+    "name": "Cargadores",
+    "icon": "⚡"
+  },
+  {
+    "id": "fuentes",
+    "name": "Fuentes",
+    "icon": "🔋"
+  },
+  {
+    "id": "gabinetes",
+    "name": "Gabinetes",
+    "icon": "🖥️"
+  },
+  {
+    "id": "Herramientas",
+    "name": "Herramientas",
+    "icon": "🔧"
+  },
+  {
+    "id": "Memorias Ram",
+    "name": "Memorias RAM",
+    "icon": "🧠"
+  },
+  {
+    "id": "monitores",
+    "name": "Monitores",
+    "icon": "🖥️"
+  },
+  {
+    "id": "Notebook",
+    "name": "PC y Notebook",
+    "icon": "💻"
+  },
+  {
+    "id": "Periféricos",
+    "name": "Periféricos",
+    "icon": "🖱️"
+  },
+  {
+    "id": "Placas madres",
+    "name": "Placas Madres",
+    "icon": "🔲"
+  },
+  {
+    "id": "Placas de video",
+    "name": "Placas de Video",
+    "icon": "🎮"
+  },
+  {
+    "id": "Procesadores",
+    "name": "Procesadores",
+    "icon": "⚙️"
+  },
+  {
+    "id": "red",
+    "name": "Redes",
+    "icon": "📡"
+  },
+  {
+    "id": "refrigeracion",
+    "name": "Refrigeración",
+    "icon": "❄️"
+  },
+  {
+    "id": "Sillas y Escritorios Gamer",
+    "name": "Sillas y Escritorios Gamer",
+    "icon": "🪑",
+    "active": true
+  }
+]

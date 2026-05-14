@@ -1,0 +1,56 @@
+{
+  "topBannerText": "SERVICIO TECNICO ESPECIALIZADO EN COMPUTACION Y MANTENIMIENTO EN CONSOLAS",
+  "address": "Jujuy 412 Edificio San Antonio 2° piso oficina \"B\"",
+  "phone": "+54 9 3856 97-0135",
+  "email": "pixisinformatica.contacto@gmail.com",
+  "instagram": "https://www.instagram.com/pixisinformatica/",
+  "facebook": "https://www.facebook.com/profile.php?id=100065599325306",
+  "tiktok": "https://www.tiktok.com/@pixis.informatica?is_from_webapp=1&sender_device=pc",
+  "youtube": "https://www.youtube.com/@PIXIS.INFORMATICA",
+  "whatsappLink": "https://wa.me/message/EYUUSVNG5HPNF1",
+  "carouselTop": [
+    {
+      "imgPc": "img/des/graficas-nvidia-5050-pc.svg",
+      "imgMobile": "img/des/graficas-nvidia-5050-mobile.svg",
+      "bannerId": "rtx5050"
+    },
+    {
+      "imgPc": "img/des/graficas-nvidia-5060-pc.svg",
+      "imgMobile": "img/des/graficas-nvidia-5060-mobile.svg",
+      "bannerId": "rtx5060"
+    },
+    {
+      "imgPc": "img/des/notebook-kelyx-y-mini-pc.jpg",
+      "imgMobile": "img/des/notebook-kelyx-y-mini-pc-mobile.jpg",
+      "bannerId": "notebooks"
+    },
+    {
+      "imgPc": "img/des/prolongadores-kelyx-pc.jpg",
+      "imgMobile": "img/des/prolongadores-kelyx-mobile.jpg",
+      "bannerId": "prolongadores"
+    }
+  ],
+  "carouselBottom": [
+    {
+      "imgPc": "img/des/actegorias.svg",
+      "imgMobile": "img/des/promo-ssd.svg",
+      "bannerId": "ssd-hiksemi"
+    },
+    {
+      "imgPc": "img/des/refrigeracion-raptor.svg",
+      "imgMobile": "img/des/refrigeracion-raptor-mobile.svg",
+      "bannerId": "refrigeracion-raptor"
+    },
+    {
+      "imgPc": "img/des/gabinetes-raptor.svg",
+      "imgMobile": "img/des/gabinetes-raptor-mobile.svg",
+      "bannerId": "gabinetes-raptor"
+    },
+    {
+      "imgPc": "img/des/perifericos-raptor-pc.svg",
+      "imgMobile": "img/des/perifericos-raptor-mobile.svg",
+      "bannerId": "perifericos-raptor"
+    }
+  ],
+  "cacheVersion": 127
+}
