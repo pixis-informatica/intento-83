@@ -1143,6 +1143,21 @@ window.addEventListener('scroll', () => {
     </div>
  <div id="cart-toast">Se agregó al carrito</div>
 </div>
+<script>
+// Apertura rápida instantánea de Links Compartidos (Skeleton Load)
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if(params.has('producto')){
+    const modal = document.getElementById('modalProduct');
+    if(modal){
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const title = document.getElementById('modalTitle');
+      if(title) title.innerHTML = '<span style="opacity:0.6; font-size:0.9em; font-weight:normal;"><i class="fas fa-spinner fa-spin"></i> Cargando información del producto...</span>';
+    }
+  }
+})();
+</script>
 <script src="js/versionalizador.js?v=1.4"></script>
 
 
