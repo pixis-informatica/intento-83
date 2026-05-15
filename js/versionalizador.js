@@ -107,9 +107,58 @@
     // ¡PREFETCH PARALELO MASIVO! 
     // Aplanamos la cascada de red iniciando estas descargas pesadas antes de que empiece a cargar cart o state.
     if (!window.location.search.includes('edit=true')) {
-      window.fetch('/data/products.json?_=' + Date.now());
+      var pSite = window.fetch('/data/site.json?_=' + Date.now());
+      var pProds = window.fetch('/data/products.json?_=' + Date.now());
       window.fetch('/data/categories.json?_=' + Date.now());
       window.fetch('/data/ui.json?_=' + Date.now());
+
+      // Lleno Rápido de Textos para Link Compartido (Instant Text)
+      var searchQuery = window.location.search;
+      if (searchQuery.includes('producto=')) {
+        var slugQuery = new URLSearchParams(searchQuery).get('producto');
+        Promise.all([
+          pSite.then(function(r){ return r.json(); }).catch(function(){ return {}; }),
+          pProds.then(function(r){ return r.json(); }).catch(function(){ return []; })
+        ]).then(function(data) {
+           var siteData = data[0];
+           var prodsData = data[1];
+
+           var theProd = prodsData.find(function(p) {
+             var s = (p.title || 'producto').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+             return s === slugQuery;
+           });
+
+           if (theProd) {
+             var mt = document.getElementById('modalTitle');
+             if (mt) mt.innerHTML = theProd.title;
+             
+             var transferPrice = Number(theProd.price || 0);
+             var localPrice = Number(theProd.priceLocal || theProd.price || 0);
+             
+             var tasa = 1.31;
+             if (siteData && siteData.tasasCuotas) {
+               var vals = siteData.tasasCuotas;
+               if (Array.isArray(vals) && vals.length >= 3) {
+                 tasa = vals[2];
+               } else if (vals['6']) {
+                 tasa = vals['6'];
+               }
+             }
+             var listaPrice = localPrice * tasa;
+
+             function fmt(num) { return '$ ' + Number(num).toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+
+             var pContado = document.getElementById('precioContado');
+             if (pContado) pContado.textContent = fmt(transferPrice);
+
+             var pLocal = document.getElementById('precioLocal');
+             if (pLocal) pLocal.textContent = fmt(localPrice);
+
+             var pLista = document.getElementById('precioLista');
+             if (pLista) pLista.textContent = fmt(listaPrice);
+           }
+        });
+      }
     }
 
     // Lógica anterior de inicialización de scripts base (cart y state)
