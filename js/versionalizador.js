@@ -56,8 +56,9 @@
       return window._originalFetch(finalUrl, finalOptions);
     };
 
-    // 3. Agregar manejo/versionado interceptando llamadas a fetch nativo para los JSON
     window._originalFetch = window.fetch;
+    var inFlightFetches = {};
+
     window.fetch = function () {
       var url = arguments[0];
       var options = arguments[1];
@@ -70,11 +71,46 @@
                            url.includes('/data/ui.json');
                            
         if (isGet && isDataTarget) {
-          return window.fetchVersioned(url, options);
+          var finalUrl;
+          try {
+            var urlObj = new URL(url, window.location.href);
+            urlObj.searchParams.set('v', window.PIXIS_VERSION);
+            urlObj.searchParams.delete('_');
+            finalUrl = urlObj.toString();
+          } catch(e) {
+             finalUrl = url;
+          }
+
+          // DEDUPLICADOR: Si ya hay un fetch en curso para esta URL exacta, 
+          // reutilizamos la promesa para que state.js no vuelva a descargar lo que ya pre-cargamos.
+          if (inFlightFetches[finalUrl]) {
+            return inFlightFetches[finalUrl].then(function(text) {
+              return new Response(text, { status: 200, headers: {'Content-Type': 'application/json'} });
+            });
+          }
+
+          var p = window.fetchVersioned(url, options).then(function(res) {
+            if (!res.ok) throw new Error('Fetch failed');
+            return res.text();
+          });
+          
+          inFlightFetches[finalUrl] = p;
+
+          return p.then(function(text) {
+            return new Response(text, { status: 200, headers: {'Content-Type': 'application/json'} });
+          });
         }
       }
       return window._originalFetch.apply(this, arguments);
     };
+
+    // ¡PREFETCH PARALELO MASIVO! 
+    // Aplanamos la cascada de red iniciando estas descargas pesadas antes de que empiece a cargar cart o state.
+    if (!window.location.search.includes('edit=true')) {
+      window.fetch('/data/products.json?_=' + Date.now());
+      window.fetch('/data/categories.json?_=' + Date.now());
+      window.fetch('/data/ui.json?_=' + Date.now());
+    }
 
     // Lógica anterior de inicialización de scripts base (cart y state)
     // Forzamos la carga inicial de site.json a través de nuestra función versionada
